@@ -11,15 +11,14 @@ contract deployedContract {
     function balanceOf(address) public returns (uint256) {}
 }
 
-contract DipTest is ERC721Enumerable, Ownable {
+contract TracDiplomas is ERC721Enumerable, Ownable {
   using Strings for uint256;
 
   string baseURI;
   address public checkerContract;
   string public baseExtension = ".json";
-  uint256 public cost = 0.05 ether;
-  uint256 public maxSupply = 50;
-  uint256 public maxMintAmount = 50;
+  uint256 public cost = 0 ether;
+  uint256 public maxSupply = 8888;
   bool public paused = false;
   bool public revealed = false;
   string public notRevealedUri;
@@ -77,7 +76,6 @@ contract DipTest is ERC721Enumerable, Ownable {
     require(!paused);
     require(_mintAmount > 0);
     require(_mintAmount <= nftsAllowed);
-    require(_mintAmount <= maxMintAmount);
     require(supply + _mintAmount <= maxSupply);
 
     if (msg.sender != owner()) {
